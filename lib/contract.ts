@@ -87,7 +87,8 @@ export type Poll = {
   exists: boolean;
 };
 
-const configuredAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+const defaultContractAddress = '0x04a25aAB96FF0C5E1E3be9a919950954fFE3CB27';
+const configuredAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || defaultContractAddress;
 
 export const contractAddress =
   configuredAddress && configuredAddress !== zeroAddress ? getAddress(configuredAddress) : zeroAddress;

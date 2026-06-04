@@ -37,7 +37,13 @@ export default function Home() {
 
   useEffect(() => {
     const saved = window.localStorage.getItem(rewardKey);
-    if (saved) setReward(JSON.parse(saved) as RewardState);
+    if (!saved) return;
+
+    try {
+      setReward(JSON.parse(saved) as RewardState);
+    } catch {
+      window.localStorage.removeItem(rewardKey);
+    }
   }, []);
 
   const pollCountQuery = useReadContract({
@@ -114,21 +120,21 @@ export default function Home() {
         <section className="app-card overflow-hidden">
           <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div className="grid gap-5">
-              <span className="pill w-fit">No token purchase required</span>
+              <span className="pill w-fit">Zero-cost start</span>
               <div className="grid gap-3">
-                <h1 className="text-4xl font-black leading-tight text-stone-950 sm:text-5xl">Earn your first Base boost now.</h1>
+                <h1 className="text-4xl font-black leading-tight text-stone-950 sm:text-5xl">Claim your first Base boost.</h1>
                 <p className="max-w-xl text-base leading-7 text-stone-600">
-                  Open the mini app, claim instant points, then connect a wallet when you want your community vote recorded on Base.
+                  Earn instant points before spending gas, then connect a wallet when you want your community signal recorded on Base.
                 </p>
               </div>
               <button className="primary-button max-w-sm" onClick={claimReward} type="button">
                 <Gift size={18} />
-                Claim Today&apos;s Boost
+                Claim Instant Boost
               </button>
               <p className="text-sm font-medium text-amber-800">{rewardNotice}</p>
             </div>
 
-            <div className="grid gap-3 rounded-lg bg-[#fff1d7] p-4">
+            <div className="grid gap-3 rounded-lg border border-amber-200 bg-[#fff1d7] p-4">
               <Metric icon={<Coins size={18} />} label="Reward points" value={reward.points.toString()} />
               <Metric icon={<Trophy size={18} />} label="Claim streak" value={`${reward.streak} day${reward.streak === 1 ? '' : 's'}`} />
               <Metric icon={<CheckCircle2 size={18} />} label="Wallet" value={address ? shortAddress(address) : 'Optional'} />
@@ -146,8 +152,8 @@ export default function Home() {
           <div className="app-card p-5">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <h2 className="text-xl font-bold text-stone-950">Live Reward</h2>
-                <p className="mt-1 text-sm text-stone-500">Immediate, local, and free to try.</p>
+                <h2 className="text-xl font-bold text-stone-950">Instant Reward</h2>
+                <p className="mt-1 text-sm text-stone-500">Visible on the first tap.</p>
               </div>
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-emerald-100 text-emerald-700">
                 <Gift size={19} />
@@ -155,7 +161,7 @@ export default function Home() {
             </div>
             <div className="mt-5 rounded-lg bg-stone-50 p-4">
               <div className="text-sm font-medium text-stone-500">Next action</div>
-              <div className="mt-2 text-2xl font-black text-stone-950">{reward.claimedAt ? 'Keep the streak alive' : 'Claim your first boost'}</div>
+              <div className="mt-2 text-2xl font-black text-stone-950">{reward.claimedAt ? 'Keep your boost active' : 'Claim your first boost'}</div>
               <p className="mt-2 text-sm leading-6 text-stone-600">
                 Points appear immediately on the first tap, so new users can participate before spending gas or buying tokens.
               </p>
@@ -166,7 +172,7 @@ export default function Home() {
             <div className="flex items-center justify-between gap-3">
               <div>
                 <h2 className="text-xl font-bold text-stone-950">Onchain Signal</h2>
-                <p className="mt-1 text-sm text-stone-500">Vote on a live Base poll when a contract is configured.</p>
+                <p className="mt-1 text-sm text-stone-500">Vote on a live Base poll with your wallet.</p>
               </div>
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-blue-100 text-blue-700">
                 <Vote size={19} />
@@ -203,8 +209,10 @@ function WalletButton() {
   const [autoTried, setAutoTried] = useState(false);
 
   useEffect(() => {
-    const agent = window.navigator.userAgent.toLowerCase();
-    const isBaseApp = agent.includes('base') || agent.includes('coinbasewallet');
+    const agent = window.navigator.userAgent;
+    const ethereum = window.ethereum as { isCoinbaseWallet?: boolean; providers?: Array<{ isCoinbaseWallet?: boolean }> } | undefined;
+    const hasCoinbaseProvider = Boolean(ethereum?.isCoinbaseWallet || ethereum?.providers?.some((provider) => provider.isCoinbaseWallet));
+    const isBaseApp = /\b(Base|CoinbaseWallet)\b/i.test(agent) && hasCoinbaseProvider;
     const injectedConnector = connectors.find((connector) => connector.type === 'injected');
 
     if (!autoTried && !isConnected && isBaseApp && injectedConnector) {

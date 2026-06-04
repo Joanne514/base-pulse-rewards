@@ -15,10 +15,10 @@ A mobile-first Base mini app built with Next.js, TypeScript, App Router, Wagmi, 
 Offchain attribution is hardcoded in `app/layout.tsx`:
 
 ```tsx
-<meta name="base:app_id" content="TODO_BASE_DEV_VERIFY_TOKEN" />
+<meta name="base:app_id" content="6a212aad1bf1ab98bb37b997" />
 ```
 
-Replace `TODO_BASE_DEV_VERIFY_TOKEN` with the base.dev verification token.
+This tag is hardcoded in the document `<head>` so page opens can appear in the base.dev Offchain dashboard after verification.
 
 Onchain attribution is centralized in `lib/wagmi.ts`:
 
@@ -31,13 +31,13 @@ After base.dev verification, replace `0x` with the encoded builder code. Every c
 ## Environment variables
 
 ```bash
-NEXT_PUBLIC_CONTRACT_ADDRESS=0x0000000000000000000000000000000000000000
-NEXT_PUBLIC_CHAIN_ID=84532
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x04a25aAB96FF0C5E1E3be9a919950954fFE3CB27
+NEXT_PUBLIC_CHAIN_ID=8453
 NEXT_PUBLIC_BASE_RPC_URL=
 NEXT_PUBLIC_BASE_SEPOLIA_RPC_URL=
 ```
 
-Use `84532` for Base Sepolia or `8453` for Base Mainnet.
+Use `8453` for Base Mainnet or `84532` for Base Sepolia.
 
 ## Commands
 

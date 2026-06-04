@@ -20,8 +20,8 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(255, 198, 112, 0.35), transparent 30rem),
-    linear-gradient(180deg, #fff7eb 0%, #fffaf4 44%, #f9fbff 100%);
+    radial-gradient(circle at top left, rgba(255, 198, 112, 0.3), transparent 26rem),
+    linear-gradient(180deg, #fff7eb 0%, #fffaf4 48%, #f7f1e8 100%);
   color: #231f20;
 }
 
@@ -32,11 +32,11 @@ input {
 
 @layer components {
   .app-card {
-    @apply rounded-lg border border-stone-200/80 bg-white/90 shadow-soft backdrop-blur;
+    @apply rounded-lg border border-stone-200/80 bg-white/95 shadow-soft backdrop-blur;
   }
 
   .primary-button {
-    @apply inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#1f2937] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#111827] disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#2d241b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#17120e] disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .secondary-button {

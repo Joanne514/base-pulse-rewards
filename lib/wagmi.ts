@@ -2,7 +2,7 @@ import { coinbaseWallet, injected } from 'wagmi/connectors';
 import { createConfig, http } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
 
-const selectedChainId = Number(process.env.NEXT_PUBLIC_CHAIN_ID || baseSepolia.id);
+const selectedChainId = Number(process.env.NEXT_PUBLIC_CHAIN_ID || base.id);
 
 export const targetChain = selectedChainId === base.id ? base : baseSepolia;
 

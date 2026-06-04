@@ -8,10 +8,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <title>Base Pulse Rewards</title>
-        <meta name="description" content="A mobile-first Base mini app for quick wallet rewards and onchain community signals." />
+        <meta name="description" content="A mobile-first Base mini app for instant rewards and onchain community signals." />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#fff3df" />
-        <meta name="base:app_id" content="TODO_BASE_DEV_VERIFY_TOKEN" />
+        <meta name="base:app_id" content="6a212aad1bf1ab98bb37b997" />
       </head>
       <body>
         <Providers>{children}</Providers>
