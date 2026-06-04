@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, ChevronDown, Coins, Gift, Loader2, LogOut, Sparkles, Trophy, Vote } from 'lucide-react';
+import { CheckCircle2, ChevronDown, CirclePlus, Coins, Gift, Loader2, LogOut, Sparkles, Trophy, Vote } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import {
   useAccount,
@@ -183,9 +183,25 @@ export default function Home() {
               {!isContractConfigured ? (
                 <StatusBox text="Contract address is not configured yet. Set NEXT_PUBLIC_CONTRACT_ADDRESS after deployment." />
               ) : activePoll ? (
-                <PollCard poll={activePoll} onRefresh={() => void pollsQuery.refetch()} />
+                <div className="grid gap-5">
+                  <PollCard poll={activePoll} onRefresh={() => void pollsQuery.refetch()} />
+                  <CreatePollButton
+                    onRefresh={() => {
+                      void pollCountQuery.refetch();
+                      void pollsQuery.refetch();
+                    }}
+                  />
+                </div>
               ) : (
-                <StatusBox text="No active poll is available right now. New polls will appear here automatically." />
+                <div className="grid gap-4">
+                  <StatusBox text="No active poll is available right now. Create one on Base or wait for a new poll to appear." />
+                  <CreatePollButton
+                    onRefresh={() => {
+                      void pollCountQuery.refetch();
+                      void pollsQuery.refetch();
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -260,6 +276,53 @@ function WalletButton() {
           ) : null}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function CreatePollButton({ onRefresh }: { onRefresh: () => void }) {
+  const { isConnected } = useAccount();
+  const chainId = useChainId();
+  const wrongNetwork = isConnected && chainId !== targetChain.id;
+  const { writeContract, data: hash, error, isPending } = useWriteContract();
+  const receipt = useWaitForTransactionReceipt({ hash });
+  const [notice, setNotice] = useState('');
+  const disabled = receipt.isLoading || isPending;
+
+  useEffect(() => {
+    if (receipt.isSuccess) {
+      setNotice('Poll created on Base.');
+      onRefresh();
+    }
+  }, [onRefresh, receipt.isSuccess]);
+
+  useEffect(() => {
+    if (error) setNotice(error.message.includes('User rejected') ? 'Transaction rejected.' : 'Poll creation failed.');
+  }, [error]);
+
+  function createPoll() {
+    if (!isConnected) return setNotice('Connect a wallet first.');
+    if (wrongNetwork) return setNotice(`Switch to ${targetChain.name}.`);
+
+    setNotice('Confirm the contract transaction in your wallet.');
+    writeContract({
+      address: contractAddress,
+      abi: basePollAbi,
+      functionName: 'createPoll',
+      args: ['Which Base reward should come next?', 'More daily boosts', 'More onchain polls', 86_400n],
+      dataSuffix: builderDataSuffix,
+    });
+  }
+
+  return (
+    <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+      <button className="primary-button" disabled={disabled} onClick={createPoll} type="button">
+        {disabled ? <Loader2 className="animate-spin" size={18} /> : <CirclePlus size={18} />}
+        Create Onchain Poll
+      </button>
+      <p className="mt-3 text-sm font-medium leading-6 text-amber-900">
+        {notice || 'This button writes to the BasePoll contract and opens a 24-hour community vote.'}
+      </p>
     </div>
   );
 }
