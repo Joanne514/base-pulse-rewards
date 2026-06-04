@@ -6,8 +6,8 @@ const selectedChainId = Number(process.env.NEXT_PUBLIC_CHAIN_ID || base.id);
 
 export const targetChain = selectedChainId === base.id ? base : baseSepolia;
 
-// Replace this with the ERC-8021 builder code data suffix from base.dev after verification.
-export const builderDataSuffix = '0x' as `0x${string}`;
+// ERC-8021 builder code data suffix from base.dev: bc_3l1r9gdx.
+export const builderDataSuffix = '0x62635f336c3172396764780b0080218021802180218021802180218021' as `0x${string}`;
 
 export const config = createConfig({
   chains: [base, baseSepolia],
