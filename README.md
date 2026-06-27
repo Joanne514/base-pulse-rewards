@@ -16,3 +16,12 @@ The app also includes Base attribution setup for both page-level attribution and
 
 - Mobile-first interface for Base users.
 - Instant local reward on the first tap, with no purchase required.
+- Wallet connection support for injected wallets and Coinbase Wallet.
+- Supports Base App embedded wallet, Coinbase Wallet, MetaMask, OKX, and other injected wallets.
+- Avoids RainbowKit.
+- Avoids WalletConnect project ID requirements.
+- Avoids WalletConnect-first connection flows.
+- Includes Base attribution metadata in the app layout.
+- Centralizes onchain attribution configuration in the Wagmi setup.
+- Built with Next.js App Router.
+- Written in TypeScript.
