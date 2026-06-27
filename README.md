@@ -59,3 +59,13 @@ This tag is included so page opens can appear in the base.dev Offchain dashboard
 Onchain attribution is centralized in `lib/wagmi.ts`.
 
 The current value is:
+
+```ts
+export const builderDataSuffix = '0x' as `0x${string}`;
+```
+
+After base.dev verification, replace `0x` with the encoded builder code.
+
+Every current `writeContract` call passes the suffix explicitly:
+
+```ts
