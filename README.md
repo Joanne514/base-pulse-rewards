@@ -94,3 +94,13 @@ Use the appropriate chain ID for the target network:
 ```
 
 for Base Mainnet, or:
+
+```bash
+84532
+```
+
+for Base Sepolia.
+
+## Setup
+
+Clone the repository:
