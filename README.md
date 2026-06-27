@@ -140,3 +140,11 @@ Create a production build:
 ```bash
 npm run build
 ```
+
+## Lint
+
+Run lint checks:
+
+```bash
+npm run lint
+```
