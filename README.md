@@ -165,3 +165,13 @@ Deploy the project as a standard Next.js app on Vercel.
 Before creating the production build, add the environment variables in the Vercel project settings.
 
 Make sure the selected chain ID and contract address match the intended deployment network.
+
+## Notes
+
+- The app is intentionally focused on injected wallets and Coinbase Wallet.
+- WalletConnect project ID setup is not required for the current connection flow.
+- Base attribution metadata is already present in the layout.
+- Onchain attribution can be updated from one centralized value in `lib/wagmi.ts`.
+- Keep environment values consistent between local development and production.
+- If deploying to Base Sepolia, update `NEXT_PUBLIC_CHAIN_ID` accordingly.
+- If deploying to Base Mainnet, use `8453` as the chain ID.
