@@ -77,3 +77,12 @@ Keeping the value centralized makes it easier to update attribution once verific
 ## Environment Variables
 
 Create an environment file for local development and add the required values.
+
+Example:
+
+```bash
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x04a25aAB96FF0C5E1E3be9a919950954fFE3CB27
+NEXT_PUBLIC_CHAIN_ID=8453
+NEXT_PUBLIC_BASE_RPC_URL=
+NEXT_PUBLIC_BASE_SEPOLIA_RPC_URL=
+```
