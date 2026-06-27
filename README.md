@@ -148,3 +148,12 @@ Run lint checks:
 ```bash
 npm run lint
 ```
+
+## Common Commands
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run lint
+```
