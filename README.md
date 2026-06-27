@@ -157,3 +157,11 @@ npm run dev
 npm run build
 npm run lint
 ```
+
+## Deployment
+
+Deploy the project as a standard Next.js app on Vercel.
+
+Before creating the production build, add the environment variables in the Vercel project settings.
+
+Make sure the selected chain ID and contract address match the intended deployment network.
