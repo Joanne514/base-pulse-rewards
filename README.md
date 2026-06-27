@@ -86,3 +86,11 @@ NEXT_PUBLIC_CHAIN_ID=8453
 NEXT_PUBLIC_BASE_RPC_URL=
 NEXT_PUBLIC_BASE_SEPOLIA_RPC_URL=
 ```
+
+Use the appropriate chain ID for the target network:
+
+```bash
+8453
+```
+
+for Base Mainnet, or:
