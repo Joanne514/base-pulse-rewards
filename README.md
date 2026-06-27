@@ -104,3 +104,12 @@ for Base Sepolia.
 ## Setup
 
 Clone the repository:
+
+```bash
+git clone https://github.com/Joanne514/base-pulse-rewards.git
+```
+
+Move into the project directory:
+
+```bash
+cd base-pulse-rewards
