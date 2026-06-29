@@ -52,3 +52,11 @@ The app includes the following metadata tag in the document `<head>`:
 ```tsx
 <meta name="base:app_id" content="6a212aad1bf1ab98bb37b997" />
 ```
+
+This metadata is included so page opens can appear in the base.dev Offchain dashboard after verification.
+
+## Onchain Attribution
+
+Onchain attribution is centralized in `lib/wagmi.ts`.
+
+The current value is:
