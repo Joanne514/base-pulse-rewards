@@ -33,3 +33,12 @@ The project also includes Base attribution setup for both page-level attribution
 Repository URL:
 
 https://github.com/Joanne514/base-pulse-rewards.git
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- App Router
+- Wagmi
+- Viem
+- Base
