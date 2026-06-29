@@ -25,3 +25,11 @@ The project also includes Base attribution setup for both page-level attribution
 - Base attribution metadata included in the app layout.
 - Centralized onchain attribution configuration in the Wagmi setup.
 - Built with the Next.js App Router.
+- Written in TypeScript.
+- Uses Wagmi and Viem for wallet and chain interactions.
+
+## Repository
+
+Repository URL:
+
+https://github.com/Joanne514/base-pulse-rewards.git
