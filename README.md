@@ -133,3 +133,13 @@ Start the local development server:
 ```bash
 npm run dev
 ```
+
+Then open the local Next.js development URL shown in your terminal.
+
+## Build
+
+Create a production build:
+
+```bash
+npm run build
+```
