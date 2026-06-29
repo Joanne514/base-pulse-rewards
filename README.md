@@ -97,3 +97,13 @@ For Base Mainnet:
 ```
 
 For Base Sepolia:
+
+```bash
+84532
+```
+
+Make sure the contract address matches the selected network.
+
+## Setup
+
+Clone the repository:
