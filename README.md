@@ -42,3 +42,13 @@ https://github.com/Joanne514/base-pulse-rewards.git
 - Wagmi
 - Viem
 - Base
+
+## Base Attribution
+
+Page-level attribution is configured in `app/layout.tsx`.
+
+The app includes the following metadata tag in the document `<head>`:
+
+```tsx
+<meta name="base:app_id" content="6a212aad1bf1ab98bb37b997" />
+```
