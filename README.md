@@ -70,3 +70,11 @@ After base.dev verification, replace `0x` with the encoded builder code.
 Current `writeContract` calls pass the suffix explicitly:
 
 ```ts
+dataSuffix: builderDataSuffix
+```
+
+Keeping this value in one place makes attribution easier to update after verification is complete.
+
+## Environment Variables
+
+Create an environment file for local development and add the required values.
