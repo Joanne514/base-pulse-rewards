@@ -116,3 +116,12 @@ Move into the project directory:
 
 ```bash
 cd base-pulse-rewards
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Add the required environment variables before starting the app.
