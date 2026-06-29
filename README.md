@@ -125,3 +125,11 @@ npm install
 ```
 
 Add the required environment variables before starting the app.
+
+## Development
+
+Start the local development server:
+
+```bash
+npm run dev
+```
