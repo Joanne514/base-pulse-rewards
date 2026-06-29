@@ -170,3 +170,12 @@ Before building for production, add the required environment variables in the Ve
 Confirm that the selected chain ID and contract address match the intended deployment network.
 
 ## Notes
+
+- The app is intentionally focused on injected wallets and Coinbase Wallet.
+- WalletConnect project ID setup is not required for the current connection flow.
+- Base attribution metadata is already included in the layout.
+- Onchain attribution can be updated from a single value in `lib/wagmi.ts`.
+- Keep environment values consistent between local development and production.
+- If deploying to Base Sepolia, set `NEXT_PUBLIC_CHAIN_ID` to `84532`.
+- If deploying to Base Mainnet, set `NEXT_PUBLIC_CHAIN_ID` to `8453`.
+- Verify the contract address before deploying to a production environment.
